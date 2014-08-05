@@ -14,44 +14,40 @@ public class Main {
         System.out.println(Calc.sum(2, 5) == 7);
         System.out.println(Calc.sum(2, -5) == -3);
 
-        // Definindo a API:
-        // System.out.println(Calc.mult(2, 5)  == 10);
-        // System.out.println(Calc.mult(4, 6)  == 24);
-        // System.out.println(Calc.mult(3, -9) == -27);
+        comoLidaremosComStrings();
+    }
 
-        // System.out.println(
-        //     Calc.sum(2_000_000_000,
-        //              2_000_000_000)); // 4_000_000_000
-
+    private static void comoLidaremosComStrings() {
+        // Experiencias com String
+        // Nao pode utilizar metodos de string ou operador +
+        // So lidaremos com o array de char, criando uma nova String quando necessario
         String s = "teste";
 
-        char[] letras = s.toCharArray();
         // ['t', 'e', 's', 't', 'e']
+        //   0,   1,   2,   3,   4
+        char[] letras = s.toCharArray();
 
-        letras[0] = 'T'; // char eh com aspas simples
-        // ['T', 'e', 's', 't', 'e']
+        // char eh com aspas simples
+        letras[0] = 'T'; // ['T', 'e', 's', 't', 'e']
 
-        s = new String(letras);
+        s = new String(letras); // "Teste"
 
         System.out.println(s); // Teste
 
         System.out.println();
+
         // percorrer o array de char
         for (int i = 0; i < letras.length; i++) {
             System.out.println(letras[i]);
         }
 
+        // ver o char como inteiro
         for (int i = 0; i < letras.length; i++) {
             System.out.println((int)letras[i]);
         }
 
-        // API para lidar com Strings
-        // upperCase, upper, up, upCase, ...
-        System.out.println(StringUtil.uppercase("teste")); // "TESTE"
-
-        // simetria, consistencia
-        System.out.println(StringUtil.downcase("TESTE")); // "teste"
-
-
+        // char eh um int, int eh um char
+        int c1 = (int) 'P';  // 80
+        char c2 = (char) 80; // 'P'
     }
 }
