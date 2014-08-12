@@ -19,5 +19,13 @@ public class Cobaia {
 
 		// Princípio da Menor Surpresa
 
+
+		long start = System.currentTimeMillis();
+		String s = null;
+		for (int i = 0; i < 1000000; i++) {
+			// s = i + "";
+			s = String.valueOf(i);
+		}
+		System.out.println((System.currentTimeMillis() - start) + " ms");
 	}
 }

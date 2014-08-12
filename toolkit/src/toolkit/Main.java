@@ -1,20 +1,25 @@
 package toolkit;
 
+import static toolkit.Calc.mult;
+
+// Toolkit: utilitários = procedimentos
+// procedimentos -> codificados de alguma forma
+// ex.: funções, método
+
 public class Main {
     public static void main(String[] args) {
+        // nome totalmente qualificado
+        System.out.println(toolkit.Calc.mult(3,5));
+        System.out.println(Calc.mult(3,5));
+        System.out.println(mult(3, 5));
 
-        // Casos de Teste:
-        System.out.println(Calc.sum(1, 2));  // 3
-        System.out.println(Calc.sum(2, 5));  // 7
-        System.out.println(Calc.sum(2, -5)); // -3
-        System.out.println(Calc.sum(1_000_000, 1_000_000)); // 2_000_000
+        System.out.println(StringUtil.upper('ç')); // 'A'
+        System.out.println(StringUtil.upper("caça")); // OGRO
 
-        // Assertiva (Afirmando (Verdadeiro (true)))
-        System.out.println(Calc.sum(1, 2) == 3);
-        System.out.println(Calc.sum(2, 5) == 7);
-        System.out.println(Calc.sum(2, -5) == -3);
+        // lower("AULA") "aula"
+        // swap("aUqT") "AuQt"
+        // capitalize("teste") "Teste"
 
-        comoLidaremosComStrings();
     }
 
     private static void comoLidaremosComStrings() {
