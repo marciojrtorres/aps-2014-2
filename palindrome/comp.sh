@@ -1,0 +1,3 @@
+#!/bin/bash
+echo Compilando ...
+javac -cp bin:lib/* src/palindrome/Palindrome.java -d bin

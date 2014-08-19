@@ -1,0 +1,3 @@
+#!/bin/bash
+echo Executando ...
+java -cp bin modelo.Main
