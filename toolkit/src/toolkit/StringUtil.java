@@ -88,7 +88,7 @@ public class StringUtil {
         for (int i = 0; i < largura; i++) {
             if (posicao == Posicao.ESQUERDA) {
                 if (i < faltam) stringComPad[i] = pad;
-                else stringComPad[i] = chars[i - 4];
+                else stringComPad[i] = chars[i - faltam];
             } else if (posicao == Posicao.DIREITA) {
                 if (i < chars.length) stringComPad[i] = chars[i];
                 else stringComPad[i] = pad;
