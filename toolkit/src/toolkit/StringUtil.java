@@ -8,66 +8,106 @@ package toolkit;
  * @version 1.0
  */
 public class StringUtil {
+
+    // public final static int ESQUERDA = 0;
+    // public final static int DIREITA = 1;
+
+    public enum Posicao {
+        ESQUERDA, DIREITA
+    }
+
     // constante substitui um numero magico
     private static final int DIF_MIN_MAIUS = 32;
 
     private StringUtil() {}
 
-    // pré-condição: entrada esperada?
-    // String caracteres minusculos
-    // pós-condição: saída esperada?
-    // String caracteres maiusculos
+    public static boolean eq(String s1, String s2) {
+        char[] chars1 = s1.toCharArray();
+        char[] chars2 = s2.toCharArray();
 
-    // entradas alternativas:
-    // tudo maisculo, numeros simbolos misturado
-    // nulo
+        if (chars1.length != chars2.length) return false;
 
-    // dividir o problema:
-    // upper é um upper de cada char
-    // simplificar expressoes:
-    // reaproveitar condicionais, tornar legivel
-    //
+        for (int i = 0; i < chars1.length; i++) if (chars1[i] != chars2[i]) return false;
 
-    // DRY: Don't Repeat Yourself
-    // NSR: Não Se Repita
-
-    // javadoc
-
-    /**
-     * Converte uma String de caracteres minusculos
-     * para caracteres maiusculos.
-     * Ex.: <b>aula2Teste -> AULA2TESTE</b>
-     *
-     * @param str     A string a ser convertida
-     * @return        A string com letras maiusculas
-     * @throws NullPointerException  Se a string for null
-     */
-    public static String upper(String str) {
-
-        if (str == null) {
-            throw new NullPointerException("nao pode ser nulo");
-        }
-
-        char[] chars = str.toCharArray();
-        // cada caractere
-        for (int i = 0; i < chars.length; i++) {
-            chars[i] = upper(chars[i]); // extrair um método
-        }
-        return new String(chars);
+        return true;
     }
 
-    public static char upper(char ch) {
-        // refatorado: substituir condicional por consulta a metodo
-        // if ((chars[i] >= 97 && chars[i] <= 122) || chars[i] == 231) {
-        if (ehMinusculo(ch)) {
-            // return (char) (ch - 32); // número mágico (constante mágica)
-            return (char) (ch - DIF_MIN_MAIUS); // número mágico (constante mágica)
+    public static String pad_velho(String s, int largura,
+                             char pad, boolean esquerda) {
+
+        char[] chars = s.toCharArray();
+
+        int faltam = largura - chars.length; // 10 - daniel.length == 4
+
+        char[] stringComPad = new char[largura]; // ex.: 10
+
+        for (int i = 0; i < largura; i++) {
+            if (esquerda) {
+                if (i < faltam) stringComPad[i] = pad;
+                else stringComPad[i] = chars[i - 4];
+            } else {
+                if (i < chars.length) stringComPad[i] = chars[i];
+                else stringComPad[i] = pad;
+            }
         }
-        return ch;
+
+        // [-,-,-,-,_,_,_,_,_,_]
+        // ----
+        //     daniel
+        // for (int i = i; i < chars.length; i++)
+        //    stringComPad[i + 4] = chars[i];
+
+        // [d,a,n,i,e,l]
+        // [-,-,-,-,_,_,_,_,_,_]
+        //          ^
+        // i = 4
+        //
+
+        return new String(stringComPad);
     }
 
-    private static boolean ehMinusculo(char ch) {
-        return (chars[i] >= 97 && chars[i] <= 122) || chars[i] == 231;
+    public static String padleft(String s, int largura, char pad) {
+        // delegando para outro método
+        return pad(s, largura, pad, Posicao.ESQUERDA);
+    }
+
+    public static String padright(String s, int largura, char pad) {
+        // delegando para outro método
+        return pad(s, largura, pad, Posicao.DIREITA);
+    }
+
+    public static String pad(String s, int largura,
+                             char pad, Posicao posicao) {
+
+        char[] chars = s.toCharArray();
+
+        int faltam = largura - chars.length; // 10 - daniel.length == 4
+
+        char[] stringComPad = new char[largura]; // ex.: 10
+
+        for (int i = 0; i < largura; i++) {
+            if (posicao == Posicao.ESQUERDA) {
+                if (i < faltam) stringComPad[i] = pad;
+                else stringComPad[i] = chars[i - 4];
+            } else if (posicao == Posicao.DIREITA) {
+                if (i < chars.length) stringComPad[i] = chars[i];
+                else stringComPad[i] = pad;
+            }
+        }
+
+        // [-,-,-,-,_,_,_,_,_,_]
+        // ----
+        //     daniel
+        // for (int i = i; i < chars.length; i++)
+        //    stringComPad[i + 4] = chars[i];
+
+        // [d,a,n,i,e,l]
+        // [-,-,-,-,_,_,_,_,_,_]
+        //          ^
+        // i = 4
+        //
+
+        return new String(stringComPad);
     }
 
 }

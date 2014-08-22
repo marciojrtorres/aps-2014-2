@@ -2,23 +2,31 @@ package toolkit;
 
 import static toolkit.Calc.mult;
 
+import static toolkit.StringUtil.*; // importa os metodos e atributos estáticos
+
+import toolkit.StringUtil.Posicao;
+
 // Toolkit: utilitários = procedimentos
 // procedimentos -> codificados de alguma forma
 // ex.: funções, método
 
 public class Main {
     public static void main(String[] args) {
-        // nome totalmente qualificado
-        System.out.println(toolkit.Calc.mult(3,5));
-        System.out.println(Calc.mult(3,5));
-        System.out.println(mult(3, 5));
 
-        System.out.println(StringUtil.upper('ç')); // 'A'
-        System.out.println(StringUtil.upper("caça")); // OGRO
 
-        // lower("AULA") "aula"
-        // swap("aUqT") "AuQt"
-        // capitalize("teste") "Teste"
+
+        // pad
+        //
+        // 10 colunas, uma palavra, um separador
+        // "----daniel"
+        // "daniel----"
+        // "--daniel--"
+
+        System.out.println(eq(pad("daniel", 10, '-', Posicao.ESQUERDA), "----daniel"));
+        System.out.println(eq(pad("daniel", 10, '-', Posicao.DIREITA), "daniel----"));
+
+        System.out.println(eq(padleft("daniel", 10, '-'), "----daniel"));
+        System.out.println(eq(padright("daniel", 10, '-'), "daniel----"));
 
     }
 
