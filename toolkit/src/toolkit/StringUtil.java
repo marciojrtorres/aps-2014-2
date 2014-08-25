@@ -95,18 +95,6 @@ public class StringUtil {
             }
         }
 
-        // [-,-,-,-,_,_,_,_,_,_]
-        // ----
-        //     daniel
-        // for (int i = i; i < chars.length; i++)
-        //    stringComPad[i + 4] = chars[i];
-
-        // [d,a,n,i,e,l]
-        // [-,-,-,-,_,_,_,_,_,_]
-        //          ^
-        // i = 4
-        //
-
         return new String(stringComPad);
     }
 

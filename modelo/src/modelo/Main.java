@@ -2,11 +2,18 @@ package modelo;
 
 public class Main {
     public static void main(String[] args) {
-        Agua a = new Agua(25);
 
-        while (!a.isGasosa()) a.aquecer();
+        MonitoraAgua mon = new MonitoraAgua();
 
-        System.out.println(a.getTemperatura());
+        //MonitoraAguaAperfeicoado mona = new MonitoraAguaAperfeicoado();
+
+        Agua a = new Agua(25, mon);
+
+        while (!a.isGasosa()) {
+            a.aquecer();
+            System.out.println(a.getTemperatura());
+        }
+
 
         // essas instruções deve acontecer quando
         // trocar de estado, mas não podem ficar no main

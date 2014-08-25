@@ -15,10 +15,17 @@ public class Agua {
 
     // atributo/campo privado
     private int temp;
-    private MonitoraAgua mon = new MonitoraAgua();
+    // declaração é sempre abstrata
+    private MonitoraAgua mon;  // = new MonitoraAgua(); "new" é sempre concreto
+    // qto mais abstrato melhor, menos acoplamento
 
     public Agua(int temp) {
         this.temp = temp;
+    }
+
+    public Agua(int temp, MonitoraAgua mon) {
+        this.temp = temp;
+        this.mon = mon;
     }
 
     public void esfriar() { // comando: altera o estado
@@ -27,7 +34,7 @@ public class Agua {
 
     public void aquecer() { // comando: altera o estado
         temp = temp + 1;
-        if (temp == 100) mon.avisaEvaporacao();
+        if (mon != null && temp == 100) mon.avisaEvaporacao();
     }
 
     // Propriedade
