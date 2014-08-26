@@ -16,14 +16,14 @@ public class Agua {
     // atributo/campo privado
     private int temp;
     // declaração é sempre abstrata
-    private MonitoraAgua mon;  // = new MonitoraAgua(); "new" é sempre concreto
+    private IMonitoraAgua mon;  // = new MonitoraAgua(); "new" é sempre concreto
     // qto mais abstrato melhor, menos acoplamento
 
     public Agua(int temp) {
         this.temp = temp;
     }
 
-    public Agua(int temp, MonitoraAgua mon) {
+    public Agua(int temp, IMonitoraAgua mon) {
         this.temp = temp;
         this.mon = mon;
     }

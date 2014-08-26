@@ -1,6 +1,6 @@
 #!/bin/bash
 echo Compilando ...
-javac -cp bin src/modelo/MonitoraAgua.java -d bin
-javac -cp bin src/modelo/MonitoraAguaAperfeicoado.java -d bin
+rm -r bin    # rd /s/y bin
+mkdir bin    # md bin
+javac -cp bin src/modelo/IMonitoraAgua.java -d bin
 javac -cp bin src/modelo/Agua.java -d bin
-javac -cp bin src/modelo/Main.java -d bin
