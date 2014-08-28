@@ -1,26 +1,37 @@
 package modelo;
 
 public class Main {
-    public static void main(String[] args) {
 
-        MonitoraAgua mon = new MonitoraAgua();
+    public static void main(String[] args) throws Exception {
 
-        //MonitoraAguaAperfeicoado mona = new MonitoraAguaAperfeicoado();
+        Cliente c = new Cliente();
 
-        Agua a = new Agua(25, mon);
+        System.out.println(c.getNome() == null);
+        System.out.println(c.getCpf() == null);
 
-        while (!a.isGasosa()) {
-            a.aquecer();
-            System.out.println(a.getTemperatura());
+        c.setNome("Nome de Teste #1");
+        c.setCpf("11133355577");
+
+        System.out.println(c.getNome().equals("Nome de Teste #1"));
+        System.out.println(c.getCpf().equals("11133355577"));
+
+        System.out.println(c.getTelefonePrincipal() == null);
+        System.out.println(c.getTelefoneContato() == null);
+
+        c.setTelefonePrincipal(new Telefone("53", "88779977"));
+        c.setTelefoneContato(new Telefone("32549875"));
+
+        System.out.println(c.getTelefonePrincipal().equals(new Telefone("53", "88779977")));
+        System.out.println(c.getTelefoneContato().equals(new Telefone("32549875")));
+
+        try {
+            c.setCpf("1133355577");
+            throw new Exception("nao deveria chegar aqui");
+        } catch (IllegalArgumentException e) {
+            System.out.println("exception ok");
         }
 
-
-        // essas instruções deve acontecer quando
-        // trocar de estado, mas não podem ficar no main
-        // obs.: só na troca
-        // System.out.println("AGUA EVAPOROU");  // liq->gas
-        // System.out.println("AGUA CONGELOU");  // liq->sol
-        // System.out.println("AGUA LIQUEFEZ");  // sol->liq
-        // System.out.println("AGUA CONDENSOU"); // gas->liq
+        System.out.println("Testes OK");
     }
+
 }
