@@ -26,7 +26,7 @@ public class Main {
 
         try {
             c.setCpf("1133355577");
-            throw new Exception("nao deveria chegar aqui");
+            throw new Exception("falhou");
         } catch (IllegalArgumentException e) {
             System.out.println("exception ok");
         }
