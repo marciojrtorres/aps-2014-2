@@ -16,11 +16,17 @@ public class Main {
         System.out.println(p1.equals(p4)); // true
 
         // p1.setPeso(?); // usar um primitivo (scalar), ex.: int
-        // p1.setPeso(5000);
+        // p1.setPeso(5000); // quanto pesa?
 
-        p1.setPeso(new Peso(2500)); // quanto pesa?
+        p1.setPeso(Peso.emGramas(1500)); // metodo fabrica estatico
 
-        System.out.println(p1.getPeso());
+        p1.setPeso(Peso.emKilos(5)); // 5kg
+
+        p1.setPeso(Peso.emLibras(10)); // 10 * 454 = 4540 gramas
+
+        System.out.println(p1.getPeso().getKilos());
+
+        System.out.println(Peso.emKilos(500).getLibras());
 
     }
 
