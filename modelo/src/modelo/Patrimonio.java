@@ -5,9 +5,18 @@ public class Patrimonio {
     private int numero;
     private String descricao;
 
+    // usar um tipo complexo em vez de um tipo primitivo
+    // ex.: Peso em vez de int ou double
+    private Peso peso; // qualificar atributo, usando uma classe - tipo - microtipo
+
     public Patrimonio(int numero, String descricao) {
         this.numero = numero;
         this.descricao = descricao;
+    }
+
+    public Peso getPeso() { return peso; }
+    public void setPeso(Peso peso) {
+        this.peso = peso;
     }
 
     public int getNumero() { return numero; }
@@ -20,6 +29,10 @@ public class Patrimonio {
         this.descricao = descricao;
     }
 
+    @Override
+    public int hashCode() { // objetos equals devem ter o mesmo hash
+        return this.numero; // mesmo campo usado no equals usa no hash
+    }
 
     @Override
     public boolean equals(Object outro) {
@@ -29,5 +42,4 @@ public class Patrimonio {
         Patrimonio outroPatrimonio = (Patrimonio) outro; // cast
         return this.numero == outroPatrimonio.numero; // true/false
     }
-
 }
