@@ -56,4 +56,9 @@ public class Agua {
         return temp >= 100;
     }
 
+    @Override
+    public String toString() {
+        return "Agua " + temp + "o";
+    }
+
 }

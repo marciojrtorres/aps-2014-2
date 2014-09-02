@@ -4,34 +4,17 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        Cliente c = new Cliente();
+        // Entidade -> Objeto com Identidade (ideia de chave)
+        Patrimonio p1 = new Patrimonio(234, "Computador Intel Core i5");
+        Patrimonio p2 = new Patrimonio(567, "Mesa para computador");
+        Patrimonio p3 = new Patrimonio(890, "Mesa para computador");
+        Patrimonio p4 = new Patrimonio(234, "Computador");
 
-        System.out.println(c.getNome() == null);
-        System.out.println(c.getCpf() == null);
+        System.out.println(p1.equals(p2)); // false
+        System.out.println(p2.equals(p3)); // false
+        System.out.println(p3.equals(p4)); // false
+        System.out.println(p1.equals(p4)); // true
 
-        c.setNome("Nome de Teste #1");
-        c.setCpf("11133355577");
-
-        System.out.println(c.getNome().equals("Nome de Teste #1"));
-        System.out.println(c.getCpf().equals("11133355577"));
-
-        System.out.println(c.getTelefonePrincipal() == null);
-        System.out.println(c.getTelefoneContato() == null);
-
-        c.setTelefonePrincipal(new Telefone("53", "88779977"));
-        c.setTelefoneContato(new Telefone("32549875"));
-
-        System.out.println(c.getTelefonePrincipal().equals(new Telefone("53", "88779977")));
-        System.out.println(c.getTelefoneContato().equals(new Telefone("32549875")));
-
-        try {
-            c.setCpf("1133355577");
-            throw new Exception("falhou");
-        } catch (IllegalArgumentException e) {
-            System.out.println("exception ok");
-        }
-
-        System.out.println("Testes OK");
     }
 
 }
