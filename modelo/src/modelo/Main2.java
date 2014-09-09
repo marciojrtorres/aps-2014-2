@@ -25,7 +25,7 @@ public class Main {
         System.out.println(c.getTelefoneContato().equals(new Telefone("32549875")));
 
         try {
-            c.setCpf("1133355577");
+            c.setCpf("1133355577"); // IAE
             throw new Exception("falhou");
         } catch (IllegalArgumentException e) {
             System.out.println("exception ok");

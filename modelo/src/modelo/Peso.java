@@ -1,6 +1,10 @@
 package modelo;
 
+// Objeto de Valor (Value Object)
+// Eh o valor que ele armazena que o qualifica
+// Microtipo (classe com poucos atributos e funcionalidades)
 public class Peso {
+
     // geralmente, se escolhe a menor medida possivel, ex: grama
     // considerar sempre int em vez de float/double
     private int gramas;
@@ -24,6 +28,11 @@ public class Peso {
         return Peso.emGramas( (int) (libras * 453.59) );
     }
 
+    // metodos que retornam uma nova instancia
+    public Peso addGramas(int gramas) {
+        return Peso.emGramas(this.gramas + gramas);
+    }
+
     public int getGramas() {
         return gramas;
     }
@@ -39,6 +48,19 @@ public class Peso {
     @Override
     public String toString() {
         return gramas + "g";
+    }
+
+    @Override
+    public int hashCode() {
+        return gramas;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) return false;
+        if ( ! (o instanceof Peso)) return false;
+        Peso outroPeso = (Peso) o;
+        return this.gramas == outroPeso.gramas;
     }
 
 }

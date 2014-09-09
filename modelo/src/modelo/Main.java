@@ -2,31 +2,28 @@ package modelo;
 
 public class Main {
 
+    // Tipos Mutáveis
+    // mudam com o tempo, alteram o estado durante a execucao
+
     public static void main(String[] args) throws Exception {
 
-        // Entidade -> Objeto com Identidade (campo chave)
-        Patrimonio p1 = new Patrimonio(234, "Computador Intel Core i5");
-        Patrimonio p2 = new Patrimonio(567, "Mesa para computador");
-        Patrimonio p3 = new Patrimonio(890, "Mesa para computador");
-        Patrimonio p4 = new Patrimonio(234, "Computador");
+        Patrimonio p1 = new Patrimonio(1, "aaa");
+        Patrimonio p2 = new Patrimonio(2, "bbb");
 
-        System.out.println(p1.equals(p2)); // false
-        System.out.println(p2.equals(p3)); // false
-        System.out.println(p3.equals(p4)); // false
-        System.out.println(p1.equals(p4)); // true
+        Peso peso = Peso.emGramas(300);
 
-        // p1.setPeso(?); // usar um primitivo (scalar), ex.: int
-        // p1.setPeso(5000); // quanto pesa?
+        p1.setPeso(peso);
+        p2.setPeso(peso);
 
-        p1.setPeso(Peso.emGramas(1500)); // metodo fabrica estatico
+        System.out.println(p1.getPeso());
+        System.out.println(p2.getPeso());
 
-        p1.setPeso(Peso.emKilos(5)); // 5kg
+        p1.setPeso(p1.getPeso().addGramas(100));
+        // p1.setPeso(Peso.emGramas(500));
 
-        p1.setPeso(Peso.emLibras(10)); // 10 * 454 = 4540 gramas
+        System.out.println(p1.getPeso()); //
+        System.out.println(p2.getPeso()); //
 
-        System.out.println(p1.getPeso().getKilos());
-
-        System.out.println(Peso.emKilos(500).getLibras());
 
     }
 
