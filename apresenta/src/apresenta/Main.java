@@ -1,6 +1,6 @@
 package apresenta;
 
-import modelo.Agua;
+import modelo.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,7 +11,21 @@ public class Main {
         //MonitoraAguaAperfeicoado mona = new MonitoraAguaAperfeicoado();
 
         // Observado / Fonte de Evento / Publicador
-        Agua a = new Agua(25, mon);
+        Agua a = new Agua(25);
+
+        a.addAguaListener(mon);
+        a.addAguaListener(new AguaListener() {
+            public void stateChange(StateChangeEvent evt) {
+                if (evt.getActualState() == State.GASOSA) {
+                    javax.swing.JOptionPane
+                        .showMessageDialog(null, "EVAPOROU");
+                }
+            }
+
+            public void tempChange(TempChangeEvent evt) {
+                // nada por enquanto
+            }
+        });
 
         while (!a.isGasosa()) {
             a.aquecer();
