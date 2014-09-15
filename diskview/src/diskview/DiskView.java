@@ -10,18 +10,21 @@ import javax.swing.UIManager;
 
 public class DiskView extends Thread {
 
+	// unidade de disco monitorada
 	private final File un;
 	
 	static {
 		try {
+			// configurando a aparencia para parecer-se com as janelas do sistema operacional
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	public DiskView(String caminho) {
-		this.un = new File(caminho);
+	// construtor com o caminho da unidade
+	public DiskView(String c) {
+		this.un = new File(c);
 	}
 	
 	@Override
@@ -49,10 +52,13 @@ public class DiskView extends Thread {
 			
 			long f = 0;
 			while (true) {
+				// monitorar de meio em meio segundo
 				Thread.sleep(500);
 				if (f != un.getFreeSpace()) {
+					// obtendo espaco livre e calculando o ocupado
 					f = un.getFreeSpace();
 					long us = (un.getTotalSpace() - f) / 1024; // espaço usado em kb
+					
 					// apresentacao visual do uso
 					progress.setValue((int) us);
 					// --- fim apresentacao visual
