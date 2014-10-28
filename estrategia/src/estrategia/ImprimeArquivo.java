@@ -4,8 +4,9 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 public class ImprimeArquivo implements Imprime {
-
+	
 	public void imprime(Documento doc) {
+
 		// IO/Arquivo
 		String nomeArquivo = System.getProperty("user.home") + "/documento.txt";
 

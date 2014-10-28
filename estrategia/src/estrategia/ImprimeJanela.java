@@ -3,11 +3,10 @@ package estrategia;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
-// Estratégia Concreta 
-
 public class ImprimeJanela implements Imprime {
 	
 	public void imprime(Documento doc) {
+		
 		// Gráfico/Janela
 		JFrame janela = new JFrame(doc.getTitulo());
 		janela.add(new JTextArea(doc.getTexto()));
