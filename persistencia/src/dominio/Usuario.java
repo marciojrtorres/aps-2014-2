@@ -1,5 +1,7 @@
 package dominio;
 
+import java.util.List;
+
 import persistencia.UsuarioDAO;
 
 public class Usuario {
@@ -43,7 +45,34 @@ public class Usuario {
 
 	public void save() {
 		UsuarioDAO dao = new UsuarioDAO();
-		dao.save(this);
+		if (this.id == null) {
+			dao.save(this);
+		} else {
+			dao.update(this);
+		}
 	}
 
+	public static Usuario find(int id) {
+		UsuarioDAO dao = new UsuarioDAO();
+		return dao.find(id);
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nome=" + nome + ", senha=" + senha
+				+ ", email=" + email + "]";
+	}
+
+	public void delete() {
+		UsuarioDAO dao = new UsuarioDAO();
+		dao.delete(id);
+		this.id = null;
+	}
+
+	public static List<Usuario> all() {
+		UsuarioDAO dao = new UsuarioDAO();
+		return dao.findAll();
+	}
+
+	
 }
